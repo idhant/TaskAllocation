@@ -38,4 +38,36 @@
 
 import robot
 import Task
+import Coordinate
 
+def create_robots(set):
+
+    TYPE_GROUND = "ground_robot"
+    TYPE_AERIAL = "aerial_robot"
+    BASE_LOCATION_X = 100
+    BASE_LOCATION_Y = 100
+    BASE_LOCATION_Z = 0
+    TASK_LIST_GROUND = [ground_fire_extinguish, ground_rescue]
+    TASK_LIST_AERIAL = [aerial_fire_extinguish, aerial_rescue] 
+    SET_ONE_ID = [1,2,3,4,5]
+
+    BASE_COORDINATES = Coordinate(BASE_LOCATION_X, BASE_LOCATION_Y, BASE_LOCATION_Z)
+
+
+    # set-1, 1 aerial robot, 4 ground robots
+    if(set == 1):
+        aerial_robot_one = robot(SET_ONE_ID(0), TYPE_AERIAL, BASE_COORDINATES, TASK_LIST_AERIAL)
+        ground_robot_one = robot(SET_ONE_ID(1), TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND)
+        ground_robot_two = robot(SET_ONE_ID(2), TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND)
+        ground_robot_three = robot(SET_ONE_ID(3), TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND)
+        ground_robot_four = robot(SET_ONE_ID(4), TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND)
+
+
+
+def main():
+    sample = 0
+
+
+
+if __name__ == '__main__':
+    main()
