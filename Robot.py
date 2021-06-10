@@ -26,4 +26,10 @@ class Robot:
     def set_robot_location(self,newLocation):
         self.robotLocation = newLocation
 
+    def get_is_capable(self):
+        return self.isCapable
+
+    def get_robot_location(self):
+        return self.robotLocation
+
     pass

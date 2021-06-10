@@ -8,5 +8,14 @@ class Coordinate:
         
     def get_coordinates(self):
         return self
+
+    def get_x_coordinate(self):
+        return self.X
+
+    def get_y_coordinate(self):
+        return self.Y
+
+    def get_z_coordinate(self):
+        return self.Z
     
     pass
