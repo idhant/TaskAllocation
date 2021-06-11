@@ -23,13 +23,22 @@ class Robot:
         self.taskAssigned = task
         self.isBusy = True
 
-    def set_robot_location(self,newLocation):
-        self.robotLocation = newLocation
+    def get_robot_id(self):
+        return self.robotID
+
+    def get_robot_type(self):
+        return self.robotType
+
+    def get_robot_location(self):
+        return self.robotLocation
 
     def get_is_capable(self):
         return self.isCapable
 
     def get_robot_location(self):
         return self.robotLocation
+
+    def set_robot_location(self,newLocation):
+        self.robotLocation = newLocation
 
     pass

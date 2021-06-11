@@ -3,13 +3,13 @@
 # Contains variables like:
 
 #taskID = Used to identify the task in the simulation.
-#\item taskDescription = Used to describe the task and its requirements.
-#\item taskQuality = Used to assign a arbitrary scaler value the is used to define the quality/priority of a task. For the purposes of this experiment, the value can range between 1 to 10 with a task of 10 holding the highest priority.
+#item taskDescription = Used to describe the task and its requirements.
+#item taskQuality = Used to assign a arbitrary scaler value the is used to define the quality/priority of a task. For the purposes of this experiment, the value can range between 1 to 10 with a task of 10 holding the highest priority.
 # taskRelativeQuality = Used to calculate the quality of the task relative to all the tasks quality. This value makes it easier to relate the priority of the tasks and calculate the final utility value.
-#\item taskLocation = Used to store the 3D coordinates of the task in the simulation environment.
-#\item taskType = Used to define the nature of the task, i.e ground firefighting, aerial rescue etc. This property of the task is useful in determining which robot can be allocated to it based on it capabilities.
+#item taskLocation = Used to store the 3D coordinates of the task in the simulation environment.
+#item taskType = Used to define the nature of the task, i.e ground firefighting, aerial rescue etc. This property of the task is useful in determining which robot can be allocated to it based on it capabilities.
 # taskAllocated = Used to check if the task is allocated to the robots.
-#\item timeAdded = Used to store the time when this task first appeared in the task queue.
+#item timeAdded = Used to store the time when this task first appeared in the task queue.
 # robotAllocated = Used to store which robot is allocated to this task.
 # #\item timeAllocated = Used to store the time when this task was allocated.
 #\item timeCompleted = Used to tore the time when this task was completed. As the focus for this experiment is on allocation, this value does not test the robots ability to complete the task but is instead used to keep track of the task completion and remove it from the queue hence it is a arbitrary value. It is calculated by multiplying the tasks scalar quality to the tasks initial distance from the robot assigned. 
@@ -39,6 +39,12 @@ class Task:
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
         self.timeAllocated = current_time
+
+    def get_task_id(self):
+        return self.taskID
+
+    def get_task_quality(self):
+        return self.taskQuality
 
     def get_task_type(self):
         return self.taskType
