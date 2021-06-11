@@ -36,9 +36,9 @@
 
 # end loop  
 
-import robot
-import Task
-import Coordinate
+from robot import robot
+from Task import Task
+from Coordinate import Coordinate
 import math
 
 robot_list = []
@@ -64,6 +64,7 @@ def create_robots(set):
         robot_list.add(robot(SET_ONE_ID(2), TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
         robot_list.add(robot(SET_ONE_ID(3), TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
         robot_list.add(robot(SET_ONE_ID(4), TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        print("Created Set-1 of Robot Sets.")
 
 def create_tasks(set):
 
@@ -91,6 +92,7 @@ def create_tasks(set):
         task_list.add(Task(SET_ONE_ID(2), QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
         task_list.add(Task(SET_ONE_ID(3), QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
         task_list.add(Task(SET_ONE_ID(4), QUALITY_GROUND_RESCUE, SAMPLE_COORDINATES, TASK_GROUND_RESCUE))
+        print("Created Set-1 of Task Sets.")
 
 # calculate the distances of all the robots to the tasks in the task queue
 # the distance is the 3d euclidean distance of the task and the robot 
@@ -117,15 +119,43 @@ def calculate_visibility(distance):
 # to find the relative quality of any task, we take the scalar quality and divide it by the summation of all the other tasks scalar quality
 def calculate_relative_quality():
     quality_list = []
+    total_quality = 0
+
+    # Get all qualities and add them in the list 
     for task in task_list:
         quality = task.get_task_quality()
         quality_list.add(quality)
-        
+    
+    # Calculate total quality
+    for quality in quality_list:
+        total_quality = quality + total_quality
+    
+    # Calculate relative quality
+    for task in task_list:
+        quality = task.get_task_quality()
+        relative_quality = quality/total_quality
+        task.set_relative_quality(relative_quality)
+
+
+# calculate the probability of allocation for each robot and task set 
+# this is done by taking the multiple of the tasks relative quality to the tasks visibility for that robot and dividing the result to the sum of all the other possible combinations
+# Again the sum of the probabilities will be equal to 1. 
+def calculate_utility(task_robot_visibility_set):
+    for visibility_set in task_robot_visibility_set:
+        task_index = 0
+        task_utility_set = []
+        for visibility in visibility_set:
+            utility = visibility * task_list(task_index).get_task_relative_quality()
+            task_utility_set.add(utility)
+            index = index + 1
 
 def main():
     create_robots(1)
     create_tasks(1)
     
+    task_robot_visibility_set = [[]]
+
+    # Calculating capability, distance sets, visibility sets
     for task in task_list:
         task_type = task.get_task_type()
         robot_capable = False
@@ -143,18 +173,26 @@ def main():
             # calculate the distances of all the robots to the tasks in the task queue
             if(robot_capable == True):
                 distance = calculate_distance(robot.get_robot_location(), task.get_task_location())
+                robot_distance_from_task.add()
                 robot_distance_from_task.add(distance)
                 visibility = calculate_visibility(distance)
                 robot_visibility_from_task.add(visibility)
 
+            # Robot not capable, invalid distances and visibility
             else:
                 distance = -1
                 visibility = -1
                 robot_distance_from_task.add(distance)
                 robot_visibility_from_task.add(visibility)
 
+        # Adding sets of robot visibility for this task to the main 2d array
+        task_robot_visibility_set.add([robot_visibility_from_task])
 
+    # Calculate relative quality
+    calculate_relative_quality()
 
+    # Calculate utility probabilities
+    calculate_utility(task_robot_visibility_set)
 
 if __name__ == '__main__':
     main()

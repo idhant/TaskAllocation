@@ -51,6 +51,9 @@ class Task:
 
     def set_task_relative_quality(self, relative_quality):
         self.taskRelativeQuality = relative_quality
+
+    def get_task_relative_quality(self):
+        return self.taskRelativeQuality
     
     pass
 
