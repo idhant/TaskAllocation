@@ -45,7 +45,7 @@ robot_list = []
 task_list = []
 
 def create_robots(set):
-
+    print("Starting create_robots function")
     TYPE_GROUND = "ground_robot"
     TYPE_AERIAL = "aerial_robot"
     BASE_LOCATION_X = 100
@@ -79,10 +79,12 @@ def create_robots(set):
             print("Robot Task Capabilities: ")
             for capability in robot.get_is_capable():
                 print(capability)
+        print("Ending create_robots function")
         print("*****")
+        print("")
             
 def create_tasks(set):
-
+    print("Starting create_tasks function")
     SET_ONE_ID = [1,2,3,4,5]
 
     TASK_AERIAL_FIREFIGHT = "aerial_fire_extinguish"
@@ -119,7 +121,9 @@ def create_tasks(set):
             print("X: " + str(task.get_task_location().get_x_coordinate()))
             print("Y: " + str(task.get_task_location().get_y_coordinate()))
             print("z: " + str(task.get_task_location().get_z_coordinate()))
+        print("Ending create_tasks function")
         print("*****")
+        print("")
 
 # calculate the distances of all the robots to the tasks in the task queue
 # the distance is the 3d euclidean distance of the task and the robot 
@@ -167,26 +171,50 @@ def print_relative_quality(task_list):
     print("*****")
     for task in task_list:
         print("Task-" +str(task.get_task_id()) + " Relative Quality is: " + str(task.get_task_relative_quality()))
-
+    print("*****")
+    print("")
 
 # calculate the probability of allocation for each robot and task set 
 # this is done by taking the multiple of the tasks relative quality to the tasks visibility for that robot and dividing the result to the sum of all the other possible combinations
 # Again the sum of the probabilities will be equal to 1. 
 def calculate_utility(task_robot_visibility_set):
+    print("*****")
+    print("Calculating utility")
+    print("*****")
+    print("")
+    task_robot_utility_set = [[]]
+
     for visibility_set in task_robot_visibility_set:
-        task_index = 0
+        print("*****")
         task_utility_set = []
+        task_index = 0
         for visibility in visibility_set:
-            relative_quality = float(task_list[task_index].get_task_relative_quality())
-            utility = float(visibility) * relative_quality 
-            task_utility_set.add(utility)
-            index = index + 1
+            print("Calculating utility set for Task-" + str(task_list[task_index].get_task_id()))
+            print(visibility)
+            robot_index = 0
+            for visible in visibility:
+                if(visible != -1):
+                    print("Robot-" + str(robot_list[robot_index].get_robot_id()) + " has as visibility value with this task")
+                    relative_quality = float(task_list[task_index].get_task_relative_quality())
+                    utility = visible * relative_quality 
+                    print("Utility of Task-" + str(task_list[task_index].get_task_id()) + " to the Robot-" + str(robot_list[robot_index].get_robot_id()) + " is = " + str(utility))
+                    task_utility_set.append(utility)
+                robot_index = robot_index + 1
+            task_index = task_index + 1
+            
+            #task_robot_visibility_set.append([task_utility_set])
+
 
 def main():
     create_robots(1)
     create_tasks(1)
     
     task_robot_visibility_set = [[]]
+
+    print("*****")
+    print("Checking capability and calculating visibility sets")
+    print("*****")
+    print("")
 
     # Calculating capability, distance sets, visibility sets
     for task in task_list:
@@ -227,8 +255,16 @@ def main():
                 robot_distance_from_task.append(distance)
                 robot_visibility_from_task.append(visibility)
 
+    
+
         # Adding sets of robot visibility for this task to the main 2d array
         task_robot_visibility_set.append([robot_visibility_from_task])
+
+    print("")
+    print("*****")
+    print("Visibility sets calculated")
+    print("*****")
+    print("")
 
     # Calculate relative quality
     calculate_relative_quality()
@@ -236,7 +272,7 @@ def main():
     print_relative_quality(task_list)
 
     # Calculate utility probabilities
-    #calculate_utility(task_robot_visibility_set)
+    calculate_utility(task_robot_visibility_set)
 
 if __name__ == '__main__':
     main()
