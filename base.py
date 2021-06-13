@@ -184,13 +184,15 @@ def calculate_utility(task_robot_visibility_set):
     print("")
     task_robot_utility_set = [[]]
 
+    task_index = 0
     for visibility_set in task_robot_visibility_set:
+        #print(visibility_set)
         print("*****")
-        task_utility_set = []
-        task_index = 0
+
         for visibility in visibility_set:
             print("Calculating utility set for Task-" + str(task_list[task_index].get_task_id()))
             print(visibility)
+            task_utility_set = []
             robot_index = 0
             for visible in visibility:
                 if(visible != -1):
@@ -199,10 +201,51 @@ def calculate_utility(task_robot_visibility_set):
                     utility = visible * relative_quality 
                     print("Utility of Task-" + str(task_list[task_index].get_task_id()) + " to the Robot-" + str(robot_list[robot_index].get_robot_id()) + " is = " + str(utility))
                     task_utility_set.append(utility)
+                else:
+                    utility = -1
+                    task_utility_set.append(utility)
                 robot_index = robot_index + 1
             task_index = task_index + 1
             
-            #task_robot_visibility_set.append([task_utility_set])
+            task_robot_utility_set.append([task_utility_set])
+
+    return task_robot_utility_set
+
+def calculate_utility_probabilities(task_robot_utility_set):
+    print("")
+    print("*****")
+    print("Calculating utility probabilities")
+    print("*****")
+    print("")
+    task_index = 0
+    for task_robot_utility in task_robot_utility_set:
+        print("*****")
+        #print(task_robot_utility)
+        for utility_set in task_robot_utility:
+            print("Calculating utility probabilities for Task-" + str(task_list[task_index].get_task_id()))
+            print(utility_set)
+            robot_index = 0
+            utility_sum = 0
+            task_assignment_probabilities = []
+            
+            for utility in utility_set:
+                if(utility != -1):
+                    utility_sum += utility
+                #print(utility)
+            print(utility_sum)
+
+            for utility in utility_set:
+                if(utility != -1):
+                    assignment_probability = utility/utility_sum
+                    
+                    #enforce final assignment
+                    #task_assignment_probabilities.append(assignment_probability)
+
+                else:
+                    assignment_probability = -1
+                    #task_assignment_probabilities.append(assignment_probability)
+            
+            task_index = task_index + 1
 
 
 def main():
@@ -271,8 +314,10 @@ def main():
 
     print_relative_quality(task_list)
 
-    # Calculate utility probabilities
-    calculate_utility(task_robot_visibility_set)
+    # Calculate utilities
+    task_robot_utility_set = calculate_utility(task_robot_visibility_set)
+
+    calculate_utility_probabilities(task_robot_utility_set)
 
 if __name__ == '__main__':
     main()
