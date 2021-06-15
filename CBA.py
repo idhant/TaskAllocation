@@ -390,7 +390,7 @@ def assign_allocations(utility_probabilities):
         print("")
         task_index += 1
 
-
+# function to print the global and local runtime of the algorithm
 def print_time_taken_to_allocate():
     print("")
     print("*****")
