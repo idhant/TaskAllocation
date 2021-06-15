@@ -1,13 +1,3 @@
-#Class of the robot
-
-# Contains variables like:
-#robotID = Used to identify the robot.
-# robotType = Used to identify the type of the robot.
-# robotLocation = Used to store the 3D coordinates of the robot in the simulation environment.
-# taskAssigned = Used to keep track of the current task assigned to the robot.
-# isBusy = Used to ascertain whether the robot is busy completing a task or navigating.
-# isCapable = Used to define the tasks that this robot can complete.
-
 class Robot:
     '''Base class to represent the robot object type in the experiment.'''
 
