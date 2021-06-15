@@ -217,36 +217,94 @@ def calculate_utility_probabilities(task_robot_utility_set):
     print("Calculating utility probabilities")
     print("*****")
     print("")
+    utility_probabilities = []
     task_index = 0
     for task_robot_utility in task_robot_utility_set:
         print("*****")
         #print(task_robot_utility)
         for utility_set in task_robot_utility:
             print("Calculating utility probabilities for Task-" + str(task_list[task_index].get_task_id()))
-            print(utility_set)
+            #print(utility_set)
             robot_index = 0
             utility_sum = 0
             task_assignment_probabilities = []
+            #print(task_assignment_probabilities)
             
             for utility in utility_set:
                 if(utility != -1):
                     utility_sum += utility
                 #print(utility)
-            print(utility_sum)
+            #print(utility_sum)
 
             for utility in utility_set:
                 if(utility != -1):
                     assignment_probability = utility/utility_sum
                     
                     #enforce final assignment
-                    #task_assignment_probabilities.append(assignment_probability)
+                    task_assignment_probabilities.append(assignment_probability)
 
                 else:
                     assignment_probability = -1
-                    #task_assignment_probabilities.append(assignment_probability)
-            
+                    task_assignment_probabilities.append(assignment_probability)
+                robot_index += 1
+
+            #print(task_assignment_probabilities)
+            utility_probabilities.append(task_assignment_probabilities)
+            #print(utility_probabilities)
             task_index = task_index + 1
 
+    return utility_probabilities
+
+def print_utility_probabilities(utility_probabilities):
+    print("")
+    print("*****")
+    print("Utility Probabilities are:")
+    print("*****")
+    print("")
+    task_index = 0
+    for utility_probability in utility_probabilities:
+        print("*****")
+        #print(utility_probability)
+        robot_index = 0
+        print("Probability of Task-" + str(task_list[task_index].get_task_id()) + " being assigned to the robots are")
+        for probability in utility_probability:
+            #print(probability)
+            print("Robot-" + str(robot_list[robot_index].get_robot_id()) + " = " + str(probability))
+            robot_index += 1
+        task_index += 1
+
+def assign_allocations(utility_probabilities):
+    print("")
+    print("*****")
+    print("Allocations decided are:")
+    print("*****")
+    print("")
+    task_index = 0
+    for utility_probability in utility_probabilities:
+        print("*****")
+        print("Assignment probabilities for task-" + str(task_list[task_index].get_task_id()) + " are: " + str(utility_probability))
+        robot_index = 0
+
+        highest_probability = -1
+        assigned_robot_index = -1
+
+        for probability in utility_probability:
+            #print(probability)
+            if(probability > highest_probability):
+                # if the robot is not busy 
+                if(robot_list[robot_index].get_robot_status() == False):
+                    highest_probability = probability
+                    assigned_robot_index = robot_index
+            robot_index += 1
+        
+        if(task_list[task_index].taskAllocated  & robot_list[assigned_robot_index].isBusy == False):
+            # Allocating the task to this robot and changing its  status to true
+            task_list[task_index].allocate_task(robot_list[assigned_robot_index].get_robot_id())
+            robot_list[assigned_robot_index].assign_task(task_list[task_index].get_task_id())
+
+            print("Task-" + str(task_list[task_index].get_task_id()) + " is assigned to robot-" + str(task_list[task_index].get_robot_allocated()) + " with a probability of " + str(highest_probability))
+             
+        task_index += 1
 
 def main():
     create_robots(1)
@@ -317,7 +375,12 @@ def main():
     # Calculate utilities
     task_robot_utility_set = calculate_utility(task_robot_visibility_set)
 
-    calculate_utility_probabilities(task_robot_utility_set)
+    #Calculate utility probabilities
+    utility_probabilities = calculate_utility_probabilities(task_robot_utility_set)
+
+    print_utility_probabilities(utility_probabilities)
+
+    assign_allocations(utility_probabilities)
 
 if __name__ == '__main__':
     main()

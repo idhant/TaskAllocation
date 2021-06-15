@@ -15,12 +15,12 @@ class Robot:
         self.robotID = robotID
         self.robotType = robotType
         self.robotLocation = robotLocation
-        self.taskAssigned = 0
+        self.taskAssigned = -1
         self.isBusy = False
         self.isCapable = isCapable
 
-    def assign_task(self,task):
-        self.taskAssigned = task
+    def assign_task(self,taskID):
+        self.taskAssigned = taskID
         self.isBusy = True
 
     def get_robot_id(self):
@@ -38,7 +38,16 @@ class Robot:
     def get_robot_location(self):
         return self.robotLocation
 
+    def get_robot_status(self):
+        return self.isBusy
+
     def set_robot_location(self,newLocation):
         self.robotLocation = newLocation
+
+    def set_robot_task(self,newTask):
+        self.taskAssigned = newTask
+
+    def set_robot_status(self,newStatus):
+        self.isBusy = newStatus
 
     pass

@@ -33,8 +33,8 @@ class Task:
         self.robotAllocated = 0
         self.taskAllocated = False
 
-    def allocate_task(self,robot):
-        self.robotAllocated = robot.robotID
+    def allocate_task(self,robotID):
+        self.robotAllocated = robotID
         self.taskAllocated = True
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
@@ -55,11 +55,20 @@ class Task:
     def get_task_quality(self):
         return self.taskQuality
 
+    def get_robot_allocated(self):
+        return self.robotAllocated
+
     def set_task_relative_quality(self, relative_quality):
         self.taskRelativeQuality = relative_quality
 
     def get_task_relative_quality(self):
         return self.taskRelativeQuality
+
+    def set_task_status(self, status):
+        self.taskAllocated = status
+
+    def set_robot_allocated(self, allocated):
+        self.robotAllocated = allocated
     
     pass
 
