@@ -1,37 +1,48 @@
 $ python CBA.py
+
+*****
 Starting create_robots function
+*****
+
 Created Set-1 of Robot Sets.
------
+
+*****
 Robot ID: 1
-Robot Type: aerial_robot    
-Robot Location: 
+Robot Type: aerial_robot
+Robot Location:
 X: 100
 Y: 100
 Z: 0
-Robot Task Capabilities:    
-aerial_fire_extinguish      
+Robot Task Capabilities:
+aerial_fire_extinguish
 aerial_rescue
------
+*****
+
+*****
 Robot ID: 2
-Robot Type: ground_robot    
-Robot Location: 
+Robot Type: ground_robot
+Robot Location:
 X: 100
 Y: 100
 Z: 0
-Robot Task Capabilities:    
-ground_fire_extinguish      
+Robot Task Capabilities:
+ground_fire_extinguish
 ground_rescue
------
+*****
+
+*****
 Robot ID: 3
-Robot Type: ground_robot    
-Robot Location: 
+Robot Type: ground_robot
+Robot Location:
 X: 100
 Y: 100
 Z: 0
-Robot Task Capabilities:    
-ground_fire_extinguish      
+Robot Task Capabilities:
+ground_fire_extinguish
 ground_rescue
------
+*****
+
+*****
 Robot ID: 4
 Robot Type: ground_robot
 Robot Location:
@@ -41,7 +52,9 @@ Z: 0
 Robot Task Capabilities:
 ground_fire_extinguish
 ground_rescue
------
+*****
+
+*****
 Robot ID: 5
 Robot Type: ground_robot
 Robot Location:
@@ -51,12 +64,20 @@ Z: 0
 Robot Task Capabilities:
 ground_fire_extinguish
 ground_rescue
+*****
+
+*****
 Ending create_robots function
 *****
 
+
+*****
 Starting create_tasks function
+*****
+
 Created Set-1 of Task Sets.
------
+
+*****
 Task ID: 1
 Task Type: aerial_fire_extinguish
 Task Quality: 6
@@ -64,7 +85,9 @@ Task Location:
 X: 150
 Y: 150
 z: 0
------
+*****
+
+*****
 Task ID: 2
 Task Type: ground_fire_extinguish
 Task Quality: 4
@@ -72,7 +95,9 @@ Task Location:
 X: 150
 Y: 150
 z: 0
------
+*****
+
+*****
 Task ID: 3
 Task Type: ground_fire_extinguish
 Task Quality: 4
@@ -80,7 +105,9 @@ Task Location:
 X: 150
 Y: 150
 z: 0
------
+*****
+
+*****
 Task ID: 4
 Task Type: ground_fire_extinguish
 Task Quality: 4
@@ -88,7 +115,9 @@ Task Location:
 X: 150
 Y: 150
 z: 0
------
+*****
+
+*****
 Task ID: 5
 Task Type: ground_rescue
 Task Quality: 8
@@ -96,6 +125,9 @@ Task Location:
 X: 150
 Y: 150
 z: 0
+*****
+
+*****
 Ending create_tasks function
 *****
 
@@ -105,6 +137,8 @@ Checking capability and calculating visibility sets
 
 *****
 Task-1 type is: aerial_fire_extinguish
+*****
+
 -----
 Robot-1 is capable of tasks:
 aerial_fire_extinguish
@@ -113,32 +147,46 @@ Robot is Capable of doing this task.
 Distance of Robot-1 to the task-1 is 70.71067811865476
 Visibility of Robot-1 to the task-1 is 0.01414213562373095
 -----
+
+-----
 Robot-2 is capable of tasks:
 ground_fire_extinguish
 ground_rescue
 Robot is not capable of doing this task
+-----
+
 -----
 Robot-3 is capable of tasks:
 ground_fire_extinguish
 ground_rescue
 Robot is not capable of doing this task
 -----
+
+-----
 Robot-4 is capable of tasks:
 ground_fire_extinguish
 ground_rescue
 Robot is not capable of doing this task
 -----
+
+-----
 Robot-5 is capable of tasks:
 ground_fire_extinguish
 ground_rescue
 Robot is not capable of doing this task
+-----
+
 *****
 Task-2 type is: ground_fire_extinguish
+*****
+
 -----
-Robot-1 is capable of tasks:
+Robot-1 is capable of tasks: 
 aerial_fire_extinguish
 aerial_rescue
 Robot is not capable of doing this task
+-----
+
 -----
 Robot-2 is capable of tasks:
 ground_fire_extinguish
@@ -147,12 +195,16 @@ Robot is Capable of doing this task.
 Distance of Robot-2 to the task-2 is 70.71067811865476
 Visibility of Robot-2 to the task-2 is 0.01414213562373095
 -----
+
+-----
 Robot-3 is capable of tasks:
 ground_fire_extinguish
 ground_rescue
 Robot is Capable of doing this task.
 Distance of Robot-3 to the task-2 is 70.71067811865476
 Visibility of Robot-3 to the task-2 is 0.01414213562373095
+-----
+
 -----
 Robot-4 is capable of tasks:
 ground_fire_extinguish
@@ -161,26 +213,36 @@ Robot is Capable of doing this task.
 Distance of Robot-4 to the task-2 is 70.71067811865476
 Visibility of Robot-4 to the task-2 is 0.01414213562373095
 -----
+
+-----
 Robot-5 is capable of tasks:
 ground_fire_extinguish
 ground_rescue
 Robot is Capable of doing this task.
 Distance of Robot-5 to the task-2 is 70.71067811865476
 Visibility of Robot-5 to the task-2 is 0.01414213562373095
+-----
+
 *****
 Task-3 type is: ground_fire_extinguish
+*****
+
 -----
 Robot-1 is capable of tasks:
 aerial_fire_extinguish
 aerial_rescue
 Robot is not capable of doing this task
 -----
-Robot-2 is capable of tasks: 
+
+-----
+Robot-2 is capable of tasks:
 ground_fire_extinguish
 ground_rescue
 Robot is Capable of doing this task.
 Distance of Robot-2 to the task-3 is 70.71067811865476
 Visibility of Robot-2 to the task-3 is 0.01414213562373095
+-----
+
 -----
 Robot-3 is capable of tasks:
 ground_fire_extinguish
@@ -189,6 +251,8 @@ Robot is Capable of doing this task.
 Distance of Robot-3 to the task-3 is 70.71067811865476
 Visibility of Robot-3 to the task-3 is 0.01414213562373095
 -----
+
+-----
 Robot-4 is capable of tasks:
 ground_fire_extinguish
 ground_rescue
@@ -196,19 +260,27 @@ Robot is Capable of doing this task.
 Distance of Robot-4 to the task-3 is 70.71067811865476
 Visibility of Robot-4 to the task-3 is 0.01414213562373095
 -----
+
+-----
 Robot-5 is capable of tasks:
 ground_fire_extinguish
 ground_rescue
 Robot is Capable of doing this task.
 Distance of Robot-5 to the task-3 is 70.71067811865476
 Visibility of Robot-5 to the task-3 is 0.01414213562373095
+-----
+
 *****
 Task-4 type is: ground_fire_extinguish
+*****
+
 -----
 Robot-1 is capable of tasks:
 aerial_fire_extinguish
 aerial_rescue
 Robot is not capable of doing this task
+-----
+
 -----
 Robot-2 is capable of tasks:
 ground_fire_extinguish
@@ -217,6 +289,8 @@ Robot is Capable of doing this task.
 Distance of Robot-2 to the task-4 is 70.71067811865476
 Visibility of Robot-2 to the task-4 is 0.01414213562373095
 -----
+
+-----
 Robot-3 is capable of tasks:
 ground_fire_extinguish
 ground_rescue
@@ -224,12 +298,16 @@ Robot is Capable of doing this task.
 Distance of Robot-3 to the task-4 is 70.71067811865476
 Visibility of Robot-3 to the task-4 is 0.01414213562373095
 -----
-Robot-4 is capable of tasks:
+
+-----
+Robot-4 is capable of tasks: 
 ground_fire_extinguish
 ground_rescue
 Robot is Capable of doing this task.
 Distance of Robot-4 to the task-4 is 70.71067811865476
 Visibility of Robot-4 to the task-4 is 0.01414213562373095
+-----
+
 -----
 Robot-5 is capable of tasks:
 ground_fire_extinguish
@@ -237,13 +315,19 @@ ground_rescue
 Robot is Capable of doing this task.
 Distance of Robot-5 to the task-4 is 70.71067811865476
 Visibility of Robot-5 to the task-4 is 0.01414213562373095
+-----
+
 *****
 Task-5 type is: ground_rescue
+*****
+
 -----
 Robot-1 is capable of tasks:
 aerial_fire_extinguish
 aerial_rescue
 Robot is not capable of doing this task
+-----
+
 -----
 Robot-2 is capable of tasks:
 ground_fire_extinguish
@@ -252,12 +336,16 @@ Robot is Capable of doing this task.
 Distance of Robot-2 to the task-5 is 70.71067811865476
 Visibility of Robot-2 to the task-5 is 0.01414213562373095
 -----
+
+-----
 Robot-3 is capable of tasks:
 ground_fire_extinguish
 ground_rescue
 Robot is Capable of doing this task.
 Distance of Robot-3 to the task-5 is 70.71067811865476
 Visibility of Robot-3 to the task-5 is 0.01414213562373095
+-----
+
 -----
 Robot-4 is capable of tasks:
 ground_fire_extinguish
@@ -266,12 +354,16 @@ Robot is Capable of doing this task.
 Distance of Robot-4 to the task-5 is 70.71067811865476
 Visibility of Robot-4 to the task-5 is 0.01414213562373095
 -----
+
+-----
 Robot-5 is capable of tasks:
 ground_fire_extinguish
 ground_rescue
 Robot is Capable of doing this task.
 Distance of Robot-5 to the task-5 is 70.71067811865476
 Visibility of Robot-5 to the task-5 is 0.01414213562373095
+-----
+
 
 *****
 Visibility sets calculated
@@ -291,54 +383,83 @@ Calculating utility
 
 *****
 *****
+
+*****
 Calculating utility set for Task-1
-[0.01414213562373095, -1, -1, -1, -1]
+
 Robot-1 has as visibility value with this task
 Utility of Task-1 to the Robot-1 is = 0.003263569759322527
+
+*****
+
 *****
 Calculating utility set for Task-2
-[-1, 0.01414213562373095, 0.01414213562373095, 0.01414213562373095, 0.01414213562373095]
+
 Robot-2 has as visibility value with this task
 Utility of Task-2 to the Robot-2 is = 0.002175713172881685
+
 Robot-3 has as visibility value with this task
 Utility of Task-2 to the Robot-3 is = 0.002175713172881685
+
 Robot-4 has as visibility value with this task
 Utility of Task-2 to the Robot-4 is = 0.002175713172881685
+
 Robot-5 has as visibility value with this task
 Utility of Task-2 to the Robot-5 is = 0.002175713172881685
+
+*****
+
 *****
 Calculating utility set for Task-3
-[-1, 0.01414213562373095, 0.01414213562373095, 0.01414213562373095, 0.01414213562373095]
+
 Robot-2 has as visibility value with this task
 Utility of Task-3 to the Robot-2 is = 0.002175713172881685
+
 Robot-3 has as visibility value with this task
 Utility of Task-3 to the Robot-3 is = 0.002175713172881685
+
 Robot-4 has as visibility value with this task
 Utility of Task-3 to the Robot-4 is = 0.002175713172881685
+
 Robot-5 has as visibility value with this task
 Utility of Task-3 to the Robot-5 is = 0.002175713172881685
+
+*****
+
 *****
 Calculating utility set for Task-4
-[-1, 0.01414213562373095, 0.01414213562373095, 0.01414213562373095, 0.01414213562373095]
+
 Robot-2 has as visibility value with this task
 Utility of Task-4 to the Robot-2 is = 0.002175713172881685
+
 Robot-3 has as visibility value with this task
 Utility of Task-4 to the Robot-3 is = 0.002175713172881685
+
 Robot-4 has as visibility value with this task
 Utility of Task-4 to the Robot-4 is = 0.002175713172881685
+
 Robot-5 has as visibility value with this task
 Utility of Task-4 to the Robot-5 is = 0.002175713172881685
+
+*****
+
 *****
 Calculating utility set for Task-5
-[-1, 0.01414213562373095, 0.01414213562373095, 0.01414213562373095, 0.01414213562373095]
+
 Robot-2 has as visibility value with this task
 Utility of Task-5 to the Robot-2 is = 0.00435142634576337
+
 Robot-3 has as visibility value with this task
 Utility of Task-5 to the Robot-3 is = 0.00435142634576337
+
 Robot-4 has as visibility value with this task
 Utility of Task-5 to the Robot-4 is = 0.00435142634576337
+
 Robot-5 has as visibility value with this task
 Utility of Task-5 to the Robot-5 is = 0.00435142634576337
+
+*****
+
 
 *****
 Calculating utility probabilities
@@ -404,14 +525,38 @@ Allocations decided are:
 Assignment probabilities for task-1 are: [1.0, -1, -1, -1, -1]
 Task-1 is assigned to robot-1 with a probability of 1.0
 *****
+
+*****
 Assignment probabilities for task-2 are: [-1, 0.25, 0.25, 0.25, 0.25]
 Task-2 is assigned to robot-2 with a probability of 0.25
+*****
+
 *****
 Assignment probabilities for task-3 are: [-1, 0.25, 0.25, 0.25, 0.25]
 Task-3 is assigned to robot-3 with a probability of 0.25
 *****
+
+*****
 Assignment probabilities for task-4 are: [-1, 0.25, 0.25, 0.25, 0.25]
 Task-4 is assigned to robot-4 with a probability of 0.25
 *****
+
+*****
 Assignment probabilities for task-5 are: [-1, 0.25, 0.25, 0.25, 0.25]
 Task-5 is assigned to robot-5 with a probability of 0.25
+*****
+
+
+*****
+Time taken to allocate tasks:
+*****
+
+Time taken to allocate for particular tasks:
+
+Time taken to allocate task-1 was 0.21895217895507812 seconds
+Time taken to allocate task-2 was 0.22194457054138184 seconds
+Time taken to allocate task-3 was 0.22294259071350098 seconds
+Time taken to allocate task-4 was 0.22594404220581055 seconds
+Time taken to allocate task-5 was 0.22693157196044922 seconds
+
+Total time taken to allocate all the tasks was 1.1167149543762207 seconds

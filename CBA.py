@@ -136,6 +136,7 @@ def create_tasks(set):
             print("X: " + str(task.get_task_location().get_x_coordinate()))
             print("Y: " + str(task.get_task_location().get_y_coordinate()))
             print("z: " + str(task.get_task_location().get_z_coordinate()))
+            #print(task.get_time_added())
             print("*****")
             print("")
         print("*****")
@@ -266,9 +267,10 @@ def calculate_utility(task_robot_visibility_set):
 
         for visibility in visibility_set:
             print("Calculating utility set for Task-" + str(task_list[task_index].get_task_id()))
-            print(visibility)
+            #print(visibility)
             task_utility_set = []
             robot_index = 0
+            print("")
             for visible in visibility:
                 if(visible != -1):
                     print("Robot-" + str(robot_list[robot_index].get_robot_id()) + " has as visibility value with this task")
@@ -276,6 +278,7 @@ def calculate_utility(task_robot_visibility_set):
                     utility = visible * relative_quality 
                     print("Utility of Task-" + str(task_list[task_index].get_task_id()) + " to the Robot-" + str(robot_list[robot_index].get_robot_id()) + " is = " + str(utility))
                     task_utility_set.append(utility)
+                    print("")
                 else:
                     utility = -1
                     task_utility_set.append(utility)
@@ -283,6 +286,8 @@ def calculate_utility(task_robot_visibility_set):
             task_index = task_index + 1
             
             task_robot_utility_set.append([task_utility_set])
+        print("*****")
+        print("")
 
     return task_robot_utility_set
 
@@ -381,8 +386,30 @@ def assign_allocations(utility_probabilities):
             robot_list[assigned_robot_index].assign_task(task_list[task_index].get_task_id())
 
             print("Task-" + str(task_list[task_index].get_task_id()) + " is assigned to robot-" + str(task_list[task_index].get_robot_allocated()) + " with a probability of " + str(highest_probability))
-             
+        print("*****")
+        print("")
         task_index += 1
+
+
+def print_time_taken_to_allocate():
+    print("")
+    print("*****")
+    print("Time taken to allocate tasks:")
+    print("*****")
+    print("")
+
+    print("Time taken to allocate for particular tasks:")
+    print("")
+    total_time = 0
+    for task in task_list:
+        print("Time taken to allocate task-" + str(task.get_task_id())  + " was " + str(task.get_time_taken_to_allocate()) + " seconds")
+        total_time += task.get_time_taken_to_allocate()
+    
+    print("")
+    print("Total time taken to allocate all the tasks was " + str(total_time) + " seconds")
+    print("")
+
+
 
 def main():
     
@@ -411,6 +438,9 @@ def main():
 
     # decide allocations and print them
     assign_allocations(utility_probabilities)
+
+    # print the local and global time taken to allocate tasks
+    print_time_taken_to_allocate()
 
 if __name__ == '__main__':
     main()

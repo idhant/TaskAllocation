@@ -1,15 +1,56 @@
+# Base simulation code
+
+# our scenario assumes that the tasks are being found by external agents. These tasks pop-up in the taskQueue
+
+# the following pseudo code represents a allocation mechanism
+
+# while (taskQueue has some tasks)
+# start loop
+
+# check to see if the tasks in the queue can be accomplished by the current robots available 
+# if a task is not able to be handled by the vacant robots check if there are any busy robots capable of handling this task
+# if there are robots capable compare the utility values of the currently assigned task to the new task. 
+# if the new task is of a significant higher priority such as a rescue operation, rellocate the robot this new task and add the old task back in the queue
+
+# calculate the distances of all the robots to the tasks in the task queue
+# if the number of robots and tasks is 5 each, we will get 5 x 5 distance combinations
+# the distance is the 3d euclidean distance of the task and the robot 
+
+# calculate the visibility of all the robots to the tasks 
+# visibility is the inverse of the distance
+# if a task is more visible, robots will be attracted more
+
+# calculate the relative quality of the tasks 
+# this is done to make sure that the sum of all the relative qualities is 1
+# to find the relative quality of any task, we take the scalar quality and divide it by the summation of all the other tasks scalar quality
+
+# calculate the probability of allocation for each robot and task set 
+# this is done by taking the multiple of the tasks relative quality to the tasks visibility for that robot and dividing the result to the sum of all the other possible combinations
+# Again the sum of the probabilities will be equal to 1. 
+
+# depending on the probability values, the tasks are assigned to the best possible robot
+# the robot also has to be capable of performing the task
+# if the robot has the highest score but it isn`t capable, the task is assigned to the next capable robot
+# after assignment of a task, the robot is marked as occupied and will show up as unavailable in the search queue until it finishes the task
+
+
+# end loop  
+
 from Robot import Robot
 from Task import Task
 from Coordinate import Coordinate
 import math
 
-# global lists to store the robot and task objects
 robot_list = []
 task_list = []
 
 # Function to create different sets of robots
 def create_robots(set):
+    print("")
+    print("*****")
     print("Starting create_robots function")
+    print("*****")
+    print("")
     TYPE_GROUND = "ground_robot"
     TYPE_AERIAL = "aerial_robot"
     BASE_LOCATION_X = 100
@@ -32,8 +73,9 @@ def create_robots(set):
         robot_list.append(Robot(SET_ONE_ID[3], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
         robot_list.append(Robot(SET_ONE_ID[4], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
         print("Created Set-1 of Robot Sets.")
+        print("")
         for robot in robot_list:
-            print("-----")
+            print("*****")
             print("Robot ID: " + str(robot.get_robot_id())) 
             print("Robot Type: " + robot.get_robot_type()) 
             print("Robot Location: ")
@@ -43,13 +85,20 @@ def create_robots(set):
             print("Robot Task Capabilities: ")
             for capability in robot.get_is_capable():
                 print(capability)
+            print("*****")
+            print("")
+        print("*****")
         print("Ending create_robots function")
         print("*****")
         print("")
             
 # Function to create different sets of tasks 
 def create_tasks(set):
+    print("")
+    print("*****")
     print("Starting create_tasks function")
+    print("*****")
+    print("")
     SET_ONE_ID = [1,2,3,4,5]
 
     TASK_AERIAL_FIREFIGHT = "aerial_fire_extinguish"
@@ -77,8 +126,9 @@ def create_tasks(set):
         task_list.append(Task(SET_ONE_ID[3], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
         task_list.append(Task(SET_ONE_ID[4], QUALITY_GROUND_RESCUE, SAMPLE_COORDINATES, TASK_GROUND_RESCUE))
         print("Created Set-1 of Task Sets.")
+        print("")
         for task in task_list:
-            print("-----")
+            print("*****")
             print("Task ID: " + str(task.get_task_id()))
             print("Task Type: " + task.get_task_type())
             print("Task Quality: "+ str(task.get_task_quality()))
@@ -86,6 +136,10 @@ def create_tasks(set):
             print("X: " + str(task.get_task_location().get_x_coordinate()))
             print("Y: " + str(task.get_task_location().get_y_coordinate()))
             print("z: " + str(task.get_task_location().get_z_coordinate()))
+            #print(task.get_time_added())
+            print("*****")
+            print("")
+        print("*****")
         print("Ending create_tasks function")
         print("*****")
         print("")
@@ -120,6 +174,8 @@ def check_capability_and_calculate_visibility():
         task_type = task.get_task_type()
         print("*****")
         print("Task-" + str(task.get_task_id()) + " type is: " + task_type)
+        print("*****")
+        print("")
         robot_distance_from_task = []
         robot_visibility_from_task = []
 
@@ -153,6 +209,9 @@ def check_capability_and_calculate_visibility():
                 visibility = -1
                 robot_distance_from_task.append(distance)
                 robot_visibility_from_task.append(visibility)
+            print("-----")
+            print("")
+
 
         # Adding sets of robot visibility for this task to the main 2d array
         task_robot_visibility_set.append([robot_visibility_from_task])
@@ -186,7 +245,7 @@ def calculate_relative_quality():
         task.set_task_relative_quality(relative_quality)
 
 # function to print the relative quality of all the tasks 
-def print_relative_quality():
+def print_relative_quality(task_list):
     print("*****")
     for task in task_list:
         print("Task-" +str(task.get_task_id()) + " Relative Quality is: " + str(task.get_task_relative_quality()))
@@ -208,9 +267,10 @@ def calculate_utility(task_robot_visibility_set):
 
         for visibility in visibility_set:
             print("Calculating utility set for Task-" + str(task_list[task_index].get_task_id()))
-            print(visibility)
+            #print(visibility)
             task_utility_set = []
             robot_index = 0
+            print("")
             for visible in visibility:
                 if(visible != -1):
                     print("Robot-" + str(robot_list[robot_index].get_robot_id()) + " has as visibility value with this task")
@@ -218,6 +278,7 @@ def calculate_utility(task_robot_visibility_set):
                     utility = visible * relative_quality 
                     print("Utility of Task-" + str(task_list[task_index].get_task_id()) + " to the Robot-" + str(robot_list[robot_index].get_robot_id()) + " is = " + str(utility))
                     task_utility_set.append(utility)
+                    print("")
                 else:
                     utility = -1
                     task_utility_set.append(utility)
@@ -225,6 +286,8 @@ def calculate_utility(task_robot_visibility_set):
             task_index = task_index + 1
             
             task_robot_utility_set.append([task_utility_set])
+        print("*****")
+        print("")
 
     return task_robot_utility_set
 
@@ -323,8 +386,30 @@ def assign_allocations(utility_probabilities):
             robot_list[assigned_robot_index].assign_task(task_list[task_index].get_task_id())
 
             print("Task-" + str(task_list[task_index].get_task_id()) + " is assigned to robot-" + str(task_list[task_index].get_robot_allocated()) + " with a probability of " + str(highest_probability))
-             
+        print("*****")
+        print("")
         task_index += 1
+
+
+def print_time_taken_to_allocate():
+    print("")
+    print("*****")
+    print("Time taken to allocate tasks:")
+    print("*****")
+    print("")
+
+    print("Time taken to allocate for particular tasks:")
+    print("")
+    total_time = 0
+    for task in task_list:
+        print("Time taken to allocate task-" + str(task.get_task_id())  + " was " + str(task.get_time_taken_to_allocate()) + " seconds")
+        total_time += task.get_time_taken_to_allocate()
+    
+    print("")
+    print("Total time taken to allocate all the tasks was " + str(total_time) + " seconds")
+    print("")
+
+
 
 def main():
     
@@ -353,6 +438,9 @@ def main():
 
     # decide allocations and print them
     assign_allocations(utility_probabilities)
+
+    # print the local and global time taken to allocate tasks
+    print_time_taken_to_allocate()
 
 if __name__ == '__main__':
     main()

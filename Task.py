@@ -17,6 +17,7 @@
 #\item timeReallocated = Used to store the time when this task was reallocated.To avoid the problem of looping re-allocations, the experiment design at this stage only allows the task to be reallocated once.
 
 from datetime import datetime
+import time
 
 class Task:
     '''Base class to represent the task object type in the experiment.'''
@@ -27,8 +28,10 @@ class Task:
         self.taskLocation = taskLocation
         self.taskType = taskType
         
-        now = datetime.now()
-        current_time = now.strftime("%H:%M:%S")
+        current_time = time.time()
+        #now = datetime.now()
+        #current_time = now
+        #current_time = now.strftime("%H:%M:%S")
         self.timeAdded = current_time
         self.robotAllocated = 0
         self.taskAllocated = False
@@ -36,8 +39,9 @@ class Task:
     def allocate_task(self,robotID):
         self.robotAllocated = robotID
         self.taskAllocated = True
-        now = datetime.now()
-        current_time = now.strftime("%H:%M:%S")
+        current_time = time.time()
+        #now = datetime.now()
+        #current_time = now.strftime("%H:%M:%S")
         self.timeAllocated = current_time
 
     def get_task_id(self):
@@ -57,6 +61,12 @@ class Task:
 
     def get_robot_allocated(self):
         return self.robotAllocated
+
+    def get_time_added(self):
+        return self.timeAdded
+
+    def get_time_taken_to_allocate(self):
+        return (self.timeAllocated - self.timeAdded )
 
     def set_task_relative_quality(self, relative_quality):
         self.taskRelativeQuality = relative_quality
