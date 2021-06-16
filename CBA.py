@@ -51,6 +51,11 @@ def create_robots(set):
     print("Starting create_robots function")
     print("*****")
     print("")
+
+    SET_ONE_ID = [1,2,3,4,5]
+    SET_TWO_ID = [1,2,3,4,5,6,7,8,9,10]
+    SET_THREE_ID = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+
     TYPE_GROUND = "ground_robot"
     TYPE_AERIAL = "aerial_robot"
     BASE_LOCATION_X = 100
@@ -58,21 +63,19 @@ def create_robots(set):
     BASE_LOCATION_Z = 0
     TASK_LIST_GROUND = ["ground_fire_extinguish", "ground_rescue"]
     TASK_LIST_AERIAL = ["aerial_fire_extinguish", "aerial_rescue"] 
-    SET_ONE_ID = [1,2,3,4,5]
-    SET_TWO_ID = [1,2,3,4,5,6,7,8,9,10]
+
     BASE_COORDINATES = Coordinate(BASE_LOCATION_X, BASE_LOCATION_Y, BASE_LOCATION_Z)
 
     global robot_list
 
     # set-1, 1 aerial robot, 4 ground robots
     if(set == 1):
-
         robot_list.append(Robot(SET_ONE_ID[0], TYPE_AERIAL, BASE_COORDINATES, TASK_LIST_AERIAL))
         robot_list.append(Robot(SET_ONE_ID[1], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
         robot_list.append(Robot(SET_ONE_ID[2], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
         robot_list.append(Robot(SET_ONE_ID[3], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
         robot_list.append(Robot(SET_ONE_ID[4], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
-        print("Created Set-1 of Robot Sets.")
+        print("Created Set-" + str(set) + " of Robot Sets.")
         print("")
         for robot in robot_list:
             print("*****")
@@ -91,7 +94,74 @@ def create_robots(set):
         print("Ending create_robots function")
         print("*****")
         print("")
-            
+
+    if(set == 2):
+        robot_list.append(Robot(SET_TWO_ID[0], TYPE_AERIAL, BASE_COORDINATES, TASK_LIST_AERIAL))
+        robot_list.append(Robot(SET_TWO_ID[1], TYPE_AERIAL, BASE_COORDINATES, TASK_LIST_AERIAL))
+        robot_list.append(Robot(SET_TWO_ID[2], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_TWO_ID[3], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_TWO_ID[4], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_TWO_ID[5], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_TWO_ID[6], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_TWO_ID[7], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_TWO_ID[8], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_TWO_ID[9], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        print("Created Set-" + str(set) + " of Robot Sets.")
+        print("")
+        for robot in robot_list:
+            print("*****")
+            print("Robot ID: " + str(robot.get_robot_id())) 
+            print("Robot Type: " + robot.get_robot_type()) 
+            print("Robot Location: ")
+            print("X: " + str(robot.get_robot_location().get_x_coordinate()))
+            print("Y: " + str(robot.get_robot_location().get_y_coordinate()))
+            print("Z: " + str(robot.get_robot_location().get_z_coordinate()))
+            print("Robot Task Capabilities: ")
+            for capability in robot.get_is_capable():
+                print(capability)
+            print("*****")
+            print("")
+        print("*****")
+        print("Ending create_robots function")
+        print("*****")
+        print("")
+        
+    if(set == 3):
+        robot_list.append(Robot(SET_THREE_ID[0], TYPE_AERIAL, BASE_COORDINATES, TASK_LIST_AERIAL))
+        robot_list.append(Robot(SET_THREE_ID[1], TYPE_AERIAL, BASE_COORDINATES, TASK_LIST_AERIAL))
+        robot_list.append(Robot(SET_THREE_ID[2], TYPE_AERIAL, BASE_COORDINATES, TASK_LIST_AERIAL))
+        robot_list.append(Robot(SET_THREE_ID[3], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_THREE_ID[4], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_THREE_ID[5], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_THREE_ID[6], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_THREE_ID[7], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_THREE_ID[8], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_THREE_ID[9], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_THREE_ID[10], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_THREE_ID[11], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_THREE_ID[12], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_THREE_ID[13], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        robot_list.append(Robot(SET_THREE_ID[14], TYPE_GROUND, BASE_COORDINATES, TASK_LIST_GROUND))
+        print("Created Set-" + str(set) + " of Robot Sets.")
+        print("")
+        for robot in robot_list:
+            print("*****")
+            print("Robot ID: " + str(robot.get_robot_id())) 
+            print("Robot Type: " + robot.get_robot_type()) 
+            print("Robot Location: ")
+            print("X: " + str(robot.get_robot_location().get_x_coordinate()))
+            print("Y: " + str(robot.get_robot_location().get_y_coordinate()))
+            print("Z: " + str(robot.get_robot_location().get_z_coordinate()))
+            print("Robot Task Capabilities: ")
+            for capability in robot.get_is_capable():
+                print(capability)
+            print("*****")
+            print("")
+        print("*****")
+        print("Ending create_robots function")
+        print("*****")
+        print("")
+           
 # Function to create different sets of tasks 
 def create_tasks(set):
     print("")
@@ -99,7 +169,10 @@ def create_tasks(set):
     print("Starting create_tasks function")
     print("*****")
     print("")
+
     SET_ONE_ID = [1,2,3,4,5]
+    SET_TWO_ID = [1,2,3,4,5,6,7,8,9,10]
+    SET_THREE_ID = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 
     TASK_AERIAL_FIREFIGHT = "aerial_fire_extinguish"
     TASK_GROUND_FIREFIGHT = "ground_fire_extinguish"
@@ -121,11 +194,12 @@ def create_tasks(set):
     # set-1, 1 aerial firefight, 3 ground firefight, 1 ground rescue 
     if(set == 1):
         task_list.append(Task(SET_ONE_ID[0], QUALITY_AERIAL_FIREFIGHT, SAMPLE_COORDINATES, TASK_AERIAL_FIREFIGHT))
-        task_list.append(Task(SET_ONE_ID[1], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        task_list.append(Task(SET_ONE_ID[1], QUALITY_GROUND_RESCUE, SAMPLE_COORDINATES, TASK_GROUND_RESCUE))
         task_list.append(Task(SET_ONE_ID[2], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
         task_list.append(Task(SET_ONE_ID[3], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
-        task_list.append(Task(SET_ONE_ID[4], QUALITY_GROUND_RESCUE, SAMPLE_COORDINATES, TASK_GROUND_RESCUE))
-        print("Created Set-1 of Task Sets.")
+        task_list.append(Task(SET_ONE_ID[4], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        
+        print("Created Set-" + str(set) + " of Task Sets.")
         print("")
         for task in task_list:
             print("*****")
@@ -143,6 +217,72 @@ def create_tasks(set):
         print("Ending create_tasks function")
         print("*****")
         print("")
+
+    if(set == 2):
+        task_list.append(Task(SET_TWO_ID[0], QUALITY_AERIAL_RESCUE, SAMPLE_COORDINATES, TASK_AERIAL_RESCUE))
+        task_list.append(Task(SET_TWO_ID[1], QUALITY_AERIAL_FIREFIGHT, SAMPLE_COORDINATES, TASK_AERIAL_FIREFIGHT))
+        task_list.append(Task(SET_TWO_ID[2], QUALITY_GROUND_RESCUE, SAMPLE_COORDINATES, TASK_GROUND_RESCUE))
+        task_list.append(Task(SET_TWO_ID[3], QUALITY_GROUND_RESCUE, SAMPLE_COORDINATES, TASK_GROUND_RESCUE))
+        task_list.append(Task(SET_TWO_ID[4], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        task_list.append(Task(SET_TWO_ID[5], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        task_list.append(Task(SET_TWO_ID[6], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        task_list.append(Task(SET_TWO_ID[7], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        task_list.append(Task(SET_TWO_ID[8], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        task_list.append(Task(SET_TWO_ID[9], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        print("Created Set-" + str(set) + " of Task Sets.")
+        print("")
+        for task in task_list:
+            print("*****")
+            print("Task ID: " + str(task.get_task_id()))
+            print("Task Type: " + task.get_task_type())
+            print("Task Quality: "+ str(task.get_task_quality()))
+            print("Task Location: ")
+            print("X: " + str(task.get_task_location().get_x_coordinate()))
+            print("Y: " + str(task.get_task_location().get_y_coordinate()))
+            print("z: " + str(task.get_task_location().get_z_coordinate()))
+            #print(task.get_time_added())
+            print("*****")
+            print("")
+        print("*****")
+        print("Ending create_tasks function")
+        print("*****")
+        print("")
+
+    if(set == 3):
+        task_list.append(Task(SET_THREE_ID[0], QUALITY_AERIAL_RESCUE, SAMPLE_COORDINATES, TASK_AERIAL_RESCUE))
+        task_list.append(Task(SET_THREE_ID[1], QUALITY_AERIAL_FIREFIGHT, SAMPLE_COORDINATES, TASK_AERIAL_FIREFIGHT))
+        task_list.append(Task(SET_THREE_ID[2], QUALITY_AERIAL_FIREFIGHT, SAMPLE_COORDINATES, TASK_AERIAL_FIREFIGHT))
+        task_list.append(Task(SET_THREE_ID[3], QUALITY_GROUND_RESCUE, SAMPLE_COORDINATES, TASK_GROUND_RESCUE))
+        task_list.append(Task(SET_THREE_ID[4], QUALITY_GROUND_RESCUE, SAMPLE_COORDINATES, TASK_GROUND_RESCUE))
+        task_list.append(Task(SET_THREE_ID[5], QUALITY_GROUND_RESCUE, SAMPLE_COORDINATES, TASK_GROUND_RESCUE))
+        task_list.append(Task(SET_THREE_ID[6], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        task_list.append(Task(SET_THREE_ID[7], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        task_list.append(Task(SET_THREE_ID[8], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        task_list.append(Task(SET_THREE_ID[9], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        task_list.append(Task(SET_THREE_ID[10], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        task_list.append(Task(SET_THREE_ID[11], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        task_list.append(Task(SET_THREE_ID[12], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        task_list.append(Task(SET_THREE_ID[13], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        task_list.append(Task(SET_THREE_ID[14], QUALITY_GROUND_FIREFIGHT, SAMPLE_COORDINATES, TASK_GROUND_FIREFIGHT))
+        print("Created Set-" + str(set) + " of Task Sets.")
+        print("")
+        for task in task_list:
+            print("*****")
+            print("Task ID: " + str(task.get_task_id()))
+            print("Task Type: " + task.get_task_type())
+            print("Task Quality: "+ str(task.get_task_quality()))
+            print("Task Location: ")
+            print("X: " + str(task.get_task_location().get_x_coordinate()))
+            print("Y: " + str(task.get_task_location().get_y_coordinate()))
+            print("z: " + str(task.get_task_location().get_z_coordinate()))
+            #print(task.get_time_added())
+            print("*****")
+            print("")
+        print("*****")
+        print("Ending create_tasks function")
+        print("*****")
+        print("")
+
 
 # function to calculate the distances of all the robots to all the tasks
 def calculate_distance(robot_coordinates, task_coordinates):
@@ -408,8 +548,6 @@ def print_time_taken_to_allocate():
     print("")
     print("Total time taken to allocate all the tasks was " + str(total_time) + " seconds")
     print("")
-
-
 
 def main():
     
