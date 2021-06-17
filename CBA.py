@@ -788,19 +788,19 @@ def print_time_taken_to_allocate():
     print("")
     total_time = 0
     for task in task_list:
-        print("Time taken to allocate task-" + str(task.get_task_id())  + " was " + str(task.get_time_taken_to_allocate()) + " seconds")
+        print("Time taken to allocate task-" + str(task.get_task_id())  + " was " + str(round(task.get_time_taken_to_allocate(), 2)) + " seconds")
         total_time += task.get_time_taken_to_allocate()
     
     print("")
-    print("Total time taken to allocate all the tasks was " + str(total_time) + " seconds")
+    print("Total time taken to allocate all the tasks was " + str(round(total_time, 2)) + " seconds")
     print("")
 
 def main():
     
     # create robot sets
-    create_robots(5)
+    create_robots(3)
     # create task sets
-    create_tasks(5)
+    create_tasks(3)
     
     # Calculate visibility sets
     task_robot_visibility_set = check_capability_and_calculate_visibility()
