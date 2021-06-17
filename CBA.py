@@ -798,9 +798,9 @@ def print_time_taken_to_allocate():
 def main():
     
     # create robot sets
-    create_robots(6)
+    create_robots(1)
     # create task sets
-    create_tasks(6)
+    create_tasks(1)
     
     # Calculate visibility sets
     task_robot_visibility_set = check_capability_and_calculate_visibility()
