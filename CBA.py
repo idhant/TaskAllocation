@@ -40,6 +40,7 @@ from Robot import Robot
 from Task import Task
 from Coordinate import Coordinate
 import math
+import random
 
 robot_list = []
 task_list = []
@@ -58,11 +59,13 @@ def create_robots(set):
 
     TYPE_GROUND = "ground_robot"
     TYPE_AERIAL = "aerial_robot"
+
+    TASK_LIST_GROUND = ["ground_fire_extinguish", "ground_rescue"]
+    TASK_LIST_AERIAL = ["aerial_fire_extinguish", "aerial_rescue"] 
+
     BASE_LOCATION_X = 100
     BASE_LOCATION_Y = 100
     BASE_LOCATION_Z = 0
-    TASK_LIST_GROUND = ["ground_fire_extinguish", "ground_rescue"]
-    TASK_LIST_AERIAL = ["aerial_fire_extinguish", "aerial_rescue"] 
 
     BASE_COORDINATES = Coordinate(BASE_LOCATION_X, BASE_LOCATION_Y, BASE_LOCATION_Z)
 
@@ -161,7 +164,130 @@ def create_robots(set):
         print("Ending create_robots function")
         print("*****")
         print("")
-           
+
+    if(set == 4):
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_ONE_ID[0], TYPE_AERIAL, random_coordinates, TASK_LIST_AERIAL))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_ONE_ID[1], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_ONE_ID[2], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_ONE_ID[3], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_ONE_ID[4], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        print("Created Set-" + str(set) + " of Robot Sets.")
+        print("")
+        for robot in robot_list:
+            print("*****")
+            print("Robot ID: " + str(robot.get_robot_id())) 
+            print("Robot Type: " + robot.get_robot_type()) 
+            print("Robot Location: ")
+            print("X: " + str(robot.get_robot_location().get_x_coordinate()))
+            print("Y: " + str(robot.get_robot_location().get_y_coordinate()))
+            print("Z: " + str(robot.get_robot_location().get_z_coordinate()))
+            print("Robot Task Capabilities: ")
+            for capability in robot.get_is_capable():
+                print(capability)
+            print("*****")
+            print("")
+        print("*****")
+        print("Ending create_robots function")
+        print("*****")
+        print("")
+
+    if(set == 5):
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_TWO_ID[0], TYPE_AERIAL, random_coordinates, TASK_LIST_AERIAL))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_TWO_ID[1], TYPE_AERIAL, random_coordinates, TASK_LIST_AERIAL))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_TWO_ID[2], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_TWO_ID[3], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_TWO_ID[4], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_TWO_ID[5], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_TWO_ID[6], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_TWO_ID[7], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_TWO_ID[8], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_TWO_ID[9], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        print("Created Set-" + str(set) + " of Robot Sets.")
+        print("")
+        for robot in robot_list:
+            print("*****")
+            print("Robot ID: " + str(robot.get_robot_id())) 
+            print("Robot Type: " + robot.get_robot_type()) 
+            print("Robot Location: ")
+            print("X: " + str(robot.get_robot_location().get_x_coordinate()))
+            print("Y: " + str(robot.get_robot_location().get_y_coordinate()))
+            print("Z: " + str(robot.get_robot_location().get_z_coordinate()))
+            print("Robot Task Capabilities: ")
+            for capability in robot.get_is_capable():
+                print(capability)
+            print("*****")
+            print("")
+        print("*****")
+        print("Ending create_robots function")
+        print("*****")
+        print("")
+
+    if(set == 6):
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[0], TYPE_AERIAL, random_coordinates, TASK_LIST_AERIAL))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[1], TYPE_AERIAL, random_coordinates, TASK_LIST_AERIAL))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[2], TYPE_AERIAL, random_coordinates, TASK_LIST_AERIAL))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[3], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[4], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[5], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[6], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[7], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[8], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[9], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[10], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[11], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[12], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[13], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        robot_list.append(Robot(SET_THREE_ID[14], TYPE_GROUND, random_coordinates, TASK_LIST_GROUND))
+        print("Created Set-" + str(set) + " of Robot Sets.")
+        print("")
+        for robot in robot_list:
+            print("*****")
+            print("Robot ID: " + str(robot.get_robot_id())) 
+            print("Robot Type: " + robot.get_robot_type()) 
+            print("Robot Location: ")
+            print("X: " + str(robot.get_robot_location().get_x_coordinate()))
+            print("Y: " + str(robot.get_robot_location().get_y_coordinate()))
+            print("Z: " + str(robot.get_robot_location().get_z_coordinate()))
+            print("Robot Task Capabilities: ")
+            for capability in robot.get_is_capable():
+                print(capability)
+            print("*****")
+            print("")
+        print("*****")
+        print("Ending create_robots function")
+        print("*****")
+        print("")
+
 # Function to create different sets of tasks 
 def create_tasks(set):
     print("")
@@ -283,6 +409,126 @@ def create_tasks(set):
         print("*****")
         print("")
 
+    if(set == 4):
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_ONE_ID[0], QUALITY_AERIAL_FIREFIGHT, random_coordinates, TASK_AERIAL_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_ONE_ID[1], QUALITY_GROUND_RESCUE, random_coordinates, TASK_GROUND_RESCUE))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_ONE_ID[2], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_ONE_ID[3], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_ONE_ID[4], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        
+        print("Created Set-" + str(set) + " of Task Sets.")
+        print("")
+        for task in task_list:
+            print("*****")
+            print("Task ID: " + str(task.get_task_id()))
+            print("Task Type: " + task.get_task_type())
+            print("Task Quality: "+ str(task.get_task_quality()))
+            print("Task Location: ")
+            print("X: " + str(task.get_task_location().get_x_coordinate()))
+            print("Y: " + str(task.get_task_location().get_y_coordinate()))
+            print("z: " + str(task.get_task_location().get_z_coordinate()))
+            #print(task.get_time_added())
+            print("*****")
+            print("")
+        print("*****")
+        print("Ending create_tasks function")
+        print("*****")
+        print("")
+
+    if(set == 5):
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_TWO_ID[0], QUALITY_AERIAL_RESCUE, random_coordinates, TASK_AERIAL_RESCUE))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_TWO_ID[1], QUALITY_AERIAL_FIREFIGHT, random_coordinates, TASK_AERIAL_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_TWO_ID[2], QUALITY_GROUND_RESCUE, random_coordinates, TASK_GROUND_RESCUE))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_TWO_ID[3], QUALITY_GROUND_RESCUE, random_coordinates, TASK_GROUND_RESCUE))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_TWO_ID[4], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_TWO_ID[5], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_TWO_ID[6], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_TWO_ID[7], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_TWO_ID[8], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_TWO_ID[9], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        print("Created Set-" + str(set) + " of Task Sets.")
+        print("")
+        for task in task_list:
+            print("*****")
+            print("Task ID: " + str(task.get_task_id()))
+            print("Task Type: " + task.get_task_type())
+            print("Task Quality: "+ str(task.get_task_quality()))
+            print("Task Location: ")
+            print("X: " + str(task.get_task_location().get_x_coordinate()))
+            print("Y: " + str(task.get_task_location().get_y_coordinate()))
+            print("z: " + str(task.get_task_location().get_z_coordinate()))
+            #print(task.get_time_added())
+            print("*****")
+            print("")
+        print("*****")
+        print("Ending create_tasks function")
+        print("*****")
+        print("")
+
+    if(set == 6):
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[0], QUALITY_AERIAL_RESCUE, random_coordinates, TASK_AERIAL_RESCUE))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[1], QUALITY_AERIAL_FIREFIGHT, random_coordinates, TASK_AERIAL_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[2], QUALITY_AERIAL_FIREFIGHT, random_coordinates, TASK_AERIAL_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[3], QUALITY_GROUND_RESCUE, random_coordinates, TASK_GROUND_RESCUE))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[4], QUALITY_GROUND_RESCUE, random_coordinates, TASK_GROUND_RESCUE))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[5], QUALITY_GROUND_RESCUE, random_coordinates, TASK_GROUND_RESCUE))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[6], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[7], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[8], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[9], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[10], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[11], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[12], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[13], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        random_coordinates = Coordinate(200 * random.random(), 200 * random.random(), 200 * random.random())
+        task_list.append(Task(SET_THREE_ID[14], QUALITY_GROUND_FIREFIGHT, random_coordinates, TASK_GROUND_FIREFIGHT))
+        print("Created Set-" + str(set) + " of Task Sets.")
+        print("")
+        for task in task_list:
+            print("*****")
+            print("Task ID: " + str(task.get_task_id()))
+            print("Task Type: " + task.get_task_type())
+            print("Task Quality: "+ str(task.get_task_quality()))
+            print("Task Location: ")
+            print("X: " + str(task.get_task_location().get_x_coordinate()))
+            print("Y: " + str(task.get_task_location().get_y_coordinate()))
+            print("z: " + str(task.get_task_location().get_z_coordinate()))
+            #print(task.get_time_added())
+            print("*****")
+            print("")
+        print("*****")
+        print("Ending create_tasks function")
+        print("*****")
+        print("")
 
 # function to calculate the distances of all the robots to all the tasks
 def calculate_distance(robot_coordinates, task_coordinates):
@@ -552,9 +798,9 @@ def print_time_taken_to_allocate():
 def main():
     
     # create robot sets
-    create_robots(1)
+    create_robots(5)
     # create task sets
-    create_tasks(1)
+    create_tasks(5)
     
     # Calculate visibility sets
     task_robot_visibility_set = check_capability_and_calculate_visibility()
